@@ -14,6 +14,7 @@ const mockRequest = {
 const mockResponse = {
   status: jest.fn(),
   json: jest.fn(),
+  cookie: jest.fn(),
 };
 
 const mockNext = jest.fn();
@@ -74,7 +75,12 @@ describe("Users Controller Unit Test", () => {
     };
     mockUsersService.signUser.mockReturnValue(signedUser);
 
-    await usersController.signUser(mockRequest, mockResponse, mockNext);
+    // await usersController.signUser(mockRequest, mockResponse, mockNext);
+    const test = await usersController.signUser(
+      mockRequest,
+      mockResponse,
+      mockNext
+    ); // 사실 이놈을 검증해야 함 (== mock 검증이나 비슷하긴 함;;) 의미를 이해하셈
 
     expect(mockUsersService.signUser).toHaveBeenCalledWith(
       reqBody.email,
