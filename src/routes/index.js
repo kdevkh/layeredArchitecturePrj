@@ -1,0 +1,12 @@
+import express from "express";
+import PostsRouter from "./posts.router.js";
+import UsersRouter from "./users.router.js";
+import TokenRouter from "./token.router.js";
+
+const router = express.Router();
+
+router.use("/posts/", PostsRouter);
+router.use("/users/", UsersRouter);
+router.use("/token", TokenRouter);
+
+export default router;
